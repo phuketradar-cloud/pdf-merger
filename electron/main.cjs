@@ -19,6 +19,7 @@ const MIME = {
   '.bcmap': 'application/octet-stream',
   '.pfb': 'application/octet-stream',
   '.ttf': 'font/ttf',
+  '.woff': 'font/woff',
   '.woff2': 'font/woff2',
 };
 
@@ -73,7 +74,7 @@ function createWindow() {
     minWidth: 380,
     minHeight: 500,
     title: 'PDF Merger',
-    backgroundColor: '#f3f5f9',
+    backgroundColor: '#0b0806',
     autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,
