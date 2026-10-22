@@ -2,6 +2,7 @@ import { useState, type DragEvent } from 'react';
 import type { AppLimits } from '../config/limits';
 import type { ImportProgress } from '../hooks/usePdfFiles';
 import { formatBytes } from '../utils/fileSize';
+import { Icon } from './Icon';
 
 interface UploadZoneProps {
   onFiles: (files: FileList | File[]) => void;
@@ -38,13 +39,13 @@ export function UploadZone({ onFiles, onPickFiles, fileCount, limits, importProg
       aria-label="พื้นที่เพิ่มไฟล์ PDF"
       data-testid="upload-zone"
     >
-      <div className="upload-icon" aria-hidden="true">
-        📄
+      <div className="upload-icon">
+        <Icon name="upload" size={30} />
       </div>
       <p className="upload-title">ลากไฟล์ PDF มาวางที่นี่</p>
       <p className="upload-sub">หรือ</p>
       <button type="button" className="btn btn-primary" onClick={onPickFiles} disabled={disabled}>
-        เลือกไฟล์จากเครื่อง
+        <Icon name="file" /> เลือกไฟล์จากเครื่อง
       </button>
       <p className="upload-meta">
         รองรับเฉพาะไฟล์ PDF · เลือกได้หลายไฟล์พร้อมกัน · เพิ่มแล้ว <strong>{fileCount}</strong> ไฟล์

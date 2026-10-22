@@ -13,6 +13,7 @@ import type { SelectionCommand, SelectionScope } from '../hooks/usePdfPages';
 import type { PageItem, PdfFileEntry } from '../types/pdf';
 import { ErrorMessage } from './ErrorMessage';
 import { PageThumbnail } from './PageThumbnail';
+import { Icon } from './Icon';
 
 interface PageGridProps {
   files: PdfFileEntry[];
@@ -76,13 +77,13 @@ export function PageGrid(props: PageGridProps) {
         <>
           <div className="toolbar" role="toolbar" aria-label="คำสั่งจัดการหน้าที่เลือก">
             <button type="button" className="btn btn-sm" onClick={() => props.onRotate(selectedIds, -90)} disabled={disabled || !selectedIds.length}>
-              ↺ หมุนซ้ายหน้าที่เลือก
+              <Icon name="rotateLeft" /> หมุนซ้ายหน้าที่เลือก
             </button>
             <button type="button" className="btn btn-sm" onClick={() => props.onRotate(selectedIds, 90)} disabled={disabled || !selectedIds.length}>
-              ↻ หมุนขวาหน้าที่เลือก
+              <Icon name="rotateRight" /> หมุนขวาหน้าที่เลือก
             </button>
             <button type="button" className="btn btn-sm btn-danger-outline" onClick={() => props.onDelete(selectedIds)} disabled={disabled || !selectedIds.length}>
-              🗑 ลบหน้าที่เลือก
+              <Icon name="trash" /> ลบหน้าที่เลือก
             </button>
             <button type="button" className="btn btn-sm btn-ghost" onClick={props.onReset} disabled={disabled}>
               คืนค่าหน้าเริ่มต้น

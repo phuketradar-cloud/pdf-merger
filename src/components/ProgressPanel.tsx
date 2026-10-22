@@ -66,7 +66,8 @@ export function ProgressPanel(props: ProgressPanelProps) {
         <ol className="steps" aria-label="ขั้นตอนการรวมไฟล์">
           {STEPS.map((step, i) => (
             <li key={step.stage} className={i < activeIndex ? 'step-done' : i === activeIndex ? 'step-active' : ''}>
-              {i < activeIndex ? '✓' : i === activeIndex ? '●' : '○'} {step.label}
+              <span className="step-mark" aria-hidden="true" />
+              {step.label}
               {i === activeIndex && step.stage === 'copying' && progress.total > 0 && (
                 <> ({progress.done}/{progress.total} หน้า)</>
               )}

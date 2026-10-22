@@ -3,6 +3,7 @@ import type { UserMessage } from '../utils/errorMessages';
 import { sanitizeFileName } from '../utils/fileName';
 import { formatBytes } from '../utils/fileSize';
 import { ErrorMessage } from './ErrorMessage';
+import { Icon } from './Icon';
 
 interface OutputPanelProps {
   fileName: string;
@@ -84,9 +85,13 @@ export function OutputPanel(props: OutputPanelProps) {
               <span className="spinner" aria-hidden="true" /> กำลังรวมไฟล์…
             </>
           ) : result ? (
-            'สร้างไฟล์ใหม่จากรายการเดิม'
+            <>
+              <Icon name="reset" /> สร้างไฟล์ใหม่จากรายการเดิม
+            </>
           ) : (
-            '⧉ รวมไฟล์ PDF'
+            <>
+              <Icon name="merge" /> รวมไฟล์ PDF
+            </>
           )}
         </button>
         {busy && (
@@ -100,7 +105,8 @@ export function OutputPanel(props: OutputPanelProps) {
 
       {result && !busy && (
         <div className="result-card" data-testid="merge-result">
-          <p className="result-title">✅ รวมไฟล์สำเร็จ และตรวจสอบไฟล์ผลลัพธ์แล้ว</p>
+          <p className="result-title">
+            <Icon name="check" /> รวมไฟล์สำเร็จ และตรวจสอบไฟล์ผลลัพธ์แล้ว</p>
           <dl>
             <dt>ชื่อไฟล์</dt>
             <dd>{result.fileName}</dd>
@@ -118,7 +124,7 @@ export function OutputPanel(props: OutputPanelProps) {
           )}
           <div className="output-actions">
             <button type="button" className="btn btn-success btn-lg" onClick={props.onDownload}>
-              ⬇ ดาวน์โหลดไฟล์
+              <Icon name="download" /> ดาวน์โหลดไฟล์
             </button>
             <button type="button" className="btn" onClick={props.onRestart}>
               เริ่มต้นใหม่

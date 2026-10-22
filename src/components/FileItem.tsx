@@ -3,6 +3,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { useState } from 'react';
 import type { PdfFileEntry } from '../types/pdf';
 import { formatBytes } from '../utils/fileSize';
+import { Icon } from './Icon';
 
 interface FileItemProps {
   file: PdfFileEntry;
@@ -67,7 +68,7 @@ export function FileItem({
           {...attributes}
           {...listeners}
         >
-          ⠿
+          <Icon name="grip" />
         </button>
         <span className="file-order">{index + 1}</span>
         <div className="file-info">
@@ -93,7 +94,7 @@ export function FileItem({
 
       <div className="file-actions">
         <button type="button" className="btn btn-sm" onClick={() => onMoveTo(file.id, index - 1)} disabled={disabled || index === 0}>
-          ▲ ขึ้น
+          <Icon name="up" /> ขึ้น
         </button>
         <button
           type="button"
@@ -101,7 +102,7 @@ export function FileItem({
           onClick={() => onMoveTo(file.id, index + 1)}
           disabled={disabled || index === total - 1}
         >
-          ▼ ลง
+          <Icon name="down" /> ลง
         </button>
         <form
           className="move-to"
@@ -125,10 +126,10 @@ export function FileItem({
           </button>
         </form>
         <button type="button" className="btn btn-sm" onClick={() => onPreview(file)} disabled={!ready}>
-          👁 ดูตัวอย่าง
+          <Icon name="eye" /> ดูตัวอย่าง
         </button>
         <button type="button" className="btn btn-sm btn-danger-outline" onClick={() => onRemove(file)} disabled={disabled}>
-          🗑 ลบไฟล์
+          <Icon name="trash" /> ลบไฟล์
         </button>
       </div>
 
@@ -141,10 +142,10 @@ export function FileItem({
             ไม่เลือกทุกหน้า
           </button>
           <button type="button" className="btn btn-sm btn-ghost" onClick={() => onRotateAll(file.id, -90)} disabled={disabled}>
-            ↺ หมุนทั้งไฟล์
+            <Icon name="rotateLeft" /> หมุนทั้งไฟล์
           </button>
           <button type="button" className="btn btn-sm btn-ghost" onClick={() => onRotateAll(file.id, 90)} disabled={disabled}>
-            ↻ หมุนทั้งไฟล์
+            <Icon name="rotateRight" /> หมุนทั้งไฟล์
           </button>
         </div>
       )}

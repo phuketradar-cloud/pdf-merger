@@ -1,3 +1,4 @@
+import { Icon } from './Icon';
 interface ErrorMessageProps {
   message: string;
   hint?: string | null;
@@ -15,7 +16,7 @@ export function ErrorMessage({ message, hint, tone = 'error', onDismiss }: Error
       </div>
       {onDismiss && (
         <button type="button" className="btn btn-ghost btn-icon" onClick={onDismiss} aria-label="ปิดข้อความ">
-          ✕
+          <Icon name="close" />
         </button>
       )}
     </div>

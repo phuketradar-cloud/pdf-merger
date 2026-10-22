@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react';
+import { Icon } from './Icon';
 
 interface ModalProps {
   title: string;
@@ -37,7 +38,7 @@ export function Modal({ title, onClose, children, footer, wide }: ModalProps) {
         <div className="modal-header">
           <h2>{title}</h2>
           <button type="button" className="btn btn-ghost btn-icon" onClick={onClose} aria-label="ปิดหน้าต่าง">
-            ✕
+            <Icon name="close" />
           </button>
         </div>
         <div className="modal-body">{children}</div>

@@ -1,3 +1,5 @@
+import { Icon } from './Icon';
+
 interface HeaderProps {
   onPickFiles: () => void;
   onReset: () => void;
@@ -17,17 +19,17 @@ export function Header({ onPickFiles, onReset, onHelp, canReset, busy }: HeaderP
         </div>
       </div>
       <div className="privacy-badge" title="ไฟล์ถูกประมวลผลภายในเครื่องนี้เท่านั้น ไม่มีการอัปโหลดไปยังเซิร์ฟเวอร์ใด">
-        <span aria-hidden="true">🔒</span> ประมวลผลบนเครื่องของคุณ ไม่อัปโหลดไฟล์
+        <Icon name="shield" /> ประมวลผลบนเครื่องของคุณ ไม่อัปโหลดไฟล์
       </div>
       <nav className="header-actions" aria-label="คำสั่งหลัก">
         <button type="button" className="btn btn-primary" onClick={onPickFiles} disabled={busy}>
-          ＋ เลือกไฟล์
+          <Icon name="plus" /> เลือกไฟล์
         </button>
         <button type="button" className="btn" onClick={onReset} disabled={!canReset || busy}>
-          ⟲ เริ่มต้นใหม่
+          <Icon name="reset" /> เริ่มต้นใหม่
         </button>
         <button type="button" className="btn" onClick={onHelp}>
-          ? คู่มือใช้งาน
+          <Icon name="help" /> คู่มือใช้งาน
         </button>
       </nav>
     </header>

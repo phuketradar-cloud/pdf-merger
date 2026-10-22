@@ -2,6 +2,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import type { PageItem, PdfFileEntry } from '../types/pdf';
 import { PageImage } from './PageImage';
+import { Icon } from './Icon';
 
 interface PageThumbnailProps {
   page: PageItem;
@@ -54,7 +55,9 @@ export function PageThumbnail({
           />
           <span>{page.selected ? `ลำดับใหม่ ${outputNumber}` : 'ไม่รวม'}</span>
         </label>
-        {page.rotation !== 0 && <span className="rotation-badge">↻ {page.rotation}°</span>}
+        {page.rotation !== 0 && <span className="rotation-badge">
+            <Icon name="rotateRight" /> {page.rotation}°
+          </span>}
       </div>
 
       <button
@@ -86,19 +89,19 @@ export function PageThumbnail({
 
       <div className="page-actions">
         <button type="button" className="btn btn-xs" onClick={() => onShift(page.id, -1)} disabled={disabled || isFirst} aria-label={`ย้าย ${label} ไปด้านหน้า`} title="ย้ายไปด้านหน้า">
-          ◀
+          <Icon name="left" />
         </button>
         <button type="button" className="btn btn-xs" onClick={() => onRotate([page.id], -90)} disabled={disabled} aria-label={`หมุนซ้าย ${label}`} title="หมุนซ้าย 90°">
-          ↺
+          <Icon name="rotateLeft" />
         </button>
         <button type="button" className="btn btn-xs" onClick={() => onRotate([page.id], 90)} disabled={disabled} aria-label={`หมุนขวา ${label}`} title="หมุนขวา 90°">
-          ↻
+          <Icon name="rotateRight" />
         </button>
         <button type="button" className="btn btn-xs btn-danger-outline" onClick={() => onDelete([page.id])} disabled={disabled} aria-label={`ลบ ${label}`} title="ลบหน้า">
-          🗑
+          <Icon name="trash" />
         </button>
         <button type="button" className="btn btn-xs" onClick={() => onShift(page.id, 1)} disabled={disabled || isLast} aria-label={`ย้าย ${label} ไปด้านหลัง`} title="ย้ายไปด้านหลัง">
-          ▶
+          <Icon name="right" />
         </button>
       </div>
     </li>

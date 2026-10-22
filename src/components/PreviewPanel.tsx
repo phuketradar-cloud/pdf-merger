@@ -4,6 +4,7 @@ import { pointsToMm } from '../utils/fileSize';
 import { normalizeRotation } from '../utils/rotation';
 import { Modal } from './Modal';
 import { PageImage } from './PageImage';
+import { Icon } from './Icon';
 
 interface PreviewPanelProps {
   pageId: string;
@@ -87,18 +88,18 @@ export function PreviewPanel({ pageId, pages, files, disabled, onNavigate, onRot
               นำหน้านี้ไปรวม
             </label>
             <button type="button" className="btn btn-sm" onClick={() => onRotate([page.id], -90)} disabled={disabled}>
-              ↺ หมุนซ้าย
+              <Icon name="rotateLeft" /> หมุนซ้าย
             </button>
             <button type="button" className="btn btn-sm" onClick={() => onRotate([page.id], 90)} disabled={disabled}>
-              ↻ หมุนขวา
+              <Icon name="rotateRight" /> หมุนขวา
             </button>
           </div>
           <div className="preview-nav">
             <button type="button" className="btn" onClick={() => onNavigate(pages[index - 1].id)} disabled={index === 0}>
-              ◀ ก่อนหน้า
+              <Icon name="left" /> ก่อนหน้า
             </button>
             <button type="button" className="btn" onClick={() => onNavigate(pages[index + 1].id)} disabled={index === pages.length - 1}>
-              ถัดไป ▶
+              ถัดไป <Icon name="right" />
             </button>
           </div>
         </aside>
